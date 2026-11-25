@@ -1032,6 +1032,8 @@ const P = Array.from({length:N}, (_,i) => {
 // lub-dub heartbeat: two quick pulses every 1.15s
 function beat(t){ const q = t % 1.15; return Math.exp(-q*q*160)*.075 + Math.exp(-(q-.24)*(q-.24)*160)*.045; }
 function sampleText(){
+  // a hidden tab can report a 0×0 canvas; sampling then would throw and stop every script below
+  if (W < 1 || H < 1){ textPts = []; return; }
   const off = document.createElement("canvas"), o = off.getContext("2d");
   const w = Math.min(W*0.84, 1200);
   off.width = Math.ceil(W); off.height = Math.ceil(H);
