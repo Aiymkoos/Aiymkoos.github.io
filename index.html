@@ -100,7 +100,10 @@ a{color:inherit}
 .nav-cta i{width:7px;height:7px;border-radius:50%;background:#ff8fbf;box-shadow:0 0 0 0 rgba(255,143,191,.7);animation:ping 2s infinite}
 @keyframes ping{70%{box-shadow:0 0 0 8px rgba(255,143,191,0)}100%{box-shadow:0 0 0 0 rgba(255,143,191,0)}}
 .progress{position:fixed;left:0;top:0;height:3px;width:100%;z-index:101;background:linear-gradient(90deg,var(--rose),var(--deep));transform-origin:left;transform:scaleX(0)}
+.nav-cta{white-space:nowrap}
+.cta-short{display:none}
 @media (max-width:860px){.nav-links,.nav-time{display:none}}
+@media (max-width:520px){.cta-full{display:none}.cta-short{display:inline}}
 
 /* ---------- buttons ---------- */
 .btn{position:relative;display:inline-flex;align-items:center;gap:12px;padding:18px 28px;border-radius:999px;border:0;background:var(--deep);color:var(--paper);font:600 16px/1 var(--f-body);text-decoration:none;overflow:hidden;isolation:isolate;transition:transform .4s var(--ease)}
@@ -574,7 +577,7 @@ section{position:relative}
     <div class="nav-pill nav-right">
       <span class="phase" id="phase" title="Фаза луны = сколько ты прочитал(а)"><svg viewBox="0 0 24 24" aria-hidden="true"><defs><clipPath id="phClip"><circle cx="12" cy="12" r="9"/></clipPath></defs><circle cx="12" cy="12" r="9" class="ph-lit"/><circle id="phShadow" cx="12" cy="12" r="9" class="ph-dark" clip-path="url(#phClip)"/></svg></span>
       <span class="nav-time mono" id="navTime">Караганда --:--</span>
-      <a class="nav-cta" href="#contact"><i aria-hidden="true"></i>Открыта к проектам</a>
+      <a class="nav-cta" href="#contact"><i aria-hidden="true"></i><span class="cta-full">Открыта к проектам</span><span class="cta-short">Написать</span></a>
     </div>
   </div>
 </header>
