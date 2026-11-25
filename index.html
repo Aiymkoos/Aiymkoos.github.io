@@ -22,6 +22,10 @@
   --mint:#ffd9e8;      /* pale pink */
   --rose:#ee6fa6;      /* bright pink */
   --blush:#fbd0e1;     /* soft pink */
+  --peach:#ff8a65;     /* coral-peach accent */
+  --butter:#ffc94d;    /* warm yellow accent */
+  --sky:#5aa9f0;       /* sky blue accent */
+  --lilac:#9a7bef;     /* lilac accent */
   --line:rgba(45,27,37,.16);
   --f-display:"Unbounded","Manrope",system-ui,sans-serif;
   --f-serif:"Playfair Display",Georgia,"Times New Roman",serif;
@@ -53,9 +57,9 @@ a{color:inherit}
 @keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-1%)}80%{transform:translate(3%,3%)}100%{transform:translate(0,0)}}
 .aura{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
 .aura i{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;animation:float 18s var(--ease) infinite alternate}
-.aura i:nth-child(1){width:46vw;height:46vw;left:-12vw;top:-10vw;background:#f9d3e3}
-.aura i:nth-child(2){width:38vw;height:38vw;right:-10vw;top:30vh;background:#ffd6e6;animation-duration:22s}
-.aura i:nth-child(3){width:30vw;height:30vw;left:30vw;bottom:-14vw;background:#ffe2d6;animation-duration:26s}
+.aura i:nth-child(1){width:46vw;height:46vw;left:-12vw;top:-10vw;background:#ffd0e2}
+.aura i:nth-child(2){width:38vw;height:38vw;right:-10vw;top:30vh;background:#d9ecff;animation-duration:22s}
+.aura i:nth-child(3){width:30vw;height:30vw;left:30vw;bottom:-14vw;background:#ffe3c2;animation-duration:26s}
 @keyframes float{to{transform:translate(8vw,6vh) scale(1.15)}}
 
 /* ---------- loader ---------- */
@@ -102,6 +106,8 @@ a{color:inherit}
 .progress{position:fixed;left:0;top:0;height:3px;width:100%;z-index:101;background:linear-gradient(90deg,var(--rose),var(--deep));transform-origin:left;transform:scaleX(0)}
 .nav-cta{white-space:nowrap}
 .cta-short{display:none}
+.tt-touch{display:none}
+@media (pointer:coarse){.tt-desk{display:none}.tt-touch{display:inline}}
 @media (max-width:860px){.nav-links,.nav-time{display:none}}
 @media (max-width:520px){.cta-full{display:none}.cta-short{display:inline}}
 
@@ -343,7 +349,7 @@ section{position:relative}
 .chat-body{display:grid;gap:14px;padding:22px 20px}
 .bubble{margin:0;max-width:85%;padding:13px 16px;border-radius:20px;font-size:16px;line-height:1.45}
 .bubble.her{background:var(--bg-2);border-bottom-left-radius:6px}
-.bubble.you{justify-self:end;background:var(--deep);color:#fff;border-bottom-right-radius:6px;min-height:3.2em;font-family:var(--f-serif);font-style:italic;font-size:18px}
+.bubble.you{justify-self:end;width:85%;box-sizing:border-box;background:var(--deep);color:#fff;border-bottom-right-radius:6px;min-height:3.2em;font-family:var(--f-serif);font-style:italic;font-size:18px}
 .bubble.you span::after{content:"";display:inline-block;width:2px;height:1em;background:#fff;vertical-align:-.12em;margin-left:3px;animation:blink 1s steps(1) infinite}
 .reasons{display:flex;flex-wrap:wrap;gap:8px;margin:0}
 .reason{padding:10px 16px;border-radius:999px;border:1.5px solid var(--blush);background:#fff;color:var(--ink);font-weight:600;font-size:14.5px;transition:background .3s,border-color .3s,color .3s,transform .3s var(--ease)}
@@ -457,7 +463,7 @@ section{position:relative}
 .sg b{font-weight:600;font-size:13.5px;padding:6px 11px;border-radius:999px;background:var(--bg);transition:background .25s,color .25s,transform .25s var(--ease)}
 .sg b:hover{background:var(--deep);color:#ffffff;transform:translateY(-2px)}
 @media (max-width:960px){.be-grid{grid-template-columns:1fr}.stackmap{grid-template-columns:1fr 1fr}}
-@media (max-width:560px){.stackmap{grid-template-columns:1fr}.term-code{font-size:11.5px;min-height:0}}
+@media (max-width:560px){.stackmap{grid-template-columns:1fr}.term-code{font-size:11px;min-height:330px}}
 
 /* services: database motif */
 .svc-db i{left:50%;width:84px;height:22px;border-radius:50%;background:var(--deep);box-shadow:0 0 0 2px var(--bg-2);margin-left:-42px;animation:dbPulse 2.4s ease-in-out infinite}
@@ -540,6 +546,64 @@ section{position:relative}
 .card .meta > p{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:14px}
 .work .sec-head{margin-bottom:clamp(18px,2.4vw,30px)!important}
 
+/* ---------- phones: calm layout ---------- */
+@media (pointer:coarse), (max-width:759px){
+  .hero{height:auto}
+  .hero-pin{position:relative;height:auto;min-height:0}
+  .hero-inner{height:auto;justify-content:flex-start;padding-top:104px;padding-bottom:min(88vw,380px)}
+  .morph-cap,.hero-moon,.grain{display:none}
+  .touch-tag{right:auto;left:50%;top:auto;bottom:18px;transform:translateX(-50%) rotate(-3deg);animation:none}
+  .hero-foot{display:none}
+  .marquee{transform:none;margin:0}
+  .hero-title{font-size:clamp(38px,11.5vw,60px)}
+  .btn{padding:16px 22px}
+  .hero-cta .btn{flex:1 1 auto;justify-content:center}
+  /* reserve space for text that types itself, so nothing below jumps */
+  .bubble.you{min-height:7.2em}
+  /* diagram: bigger labels, details live in the tip under it */
+  .a-node text{font-size:24px}
+  .a-node text.s{display:none}
+  .a-zl{font-size:15px}
+  .arch-tip{min-height:4.4em}
+}
+
+/* ---------- extra colours (pink stays the lead) ---------- */
+.hero-roles li:nth-child(1){color:var(--deep)}
+.hero-roles li:nth-child(2){color:#d9573a;border-color:rgba(255,138,101,.35)}
+.hero-roles li:nth-child(3){color:#2f7fcf;border-color:rgba(90,169,240,.35)}
+.hero-roles li:nth-child(4){color:#7a59dd;border-color:rgba(154,123,239,.35)}
+.hero-roles li:nth-child(2)::before{box-shadow:-.18em .06em 0 0 var(--peach)}
+.hero-roles li:nth-child(3)::before{box-shadow:-.18em .06em 0 0 var(--sky)}
+.hero-roles li:nth-child(4)::before{box-shadow:-.18em .06em 0 0 var(--lilac)}
+.stat:nth-child(2) b{color:#e0603c}
+.stat:nth-child(3) b{color:#2f7fcf}
+.stat:nth-child(4) b{color:#7a59dd}
+.tl:nth-child(1) .tl-kind{background:#e3f0ff;color:#2f7fcf}
+.tl:nth-child(2) .tl-kind{background:#fff1cc;color:#a26a00}
+.tl:nth-child(3) .tl-kind{background:#ffe0ec;color:var(--deep)}
+.tl:nth-child(4) .tl-kind{background:#ffe6dc;color:#d9573a}
+.tl:nth-child(5) .tl-kind{background:#efe8ff;color:#7a59dd}
+.tl:nth-child(1)::before{border-color:var(--sky)}
+.tl:nth-child(2)::before{border-color:var(--butter)}
+.tl:nth-child(4)::before{border-color:var(--peach)}
+.tl:nth-child(5)::before{border-color:var(--lilac)}
+.sg:nth-child(2) > .mono{color:#e0603c}
+.sg:nth-child(3) > .mono{color:#2f7fcf}
+.sg:nth-child(4) > .mono{color:#7a59dd}
+.sg:nth-child(5) > .mono{color:#a26a00}
+.sg:nth-child(2) b:hover{background:var(--peach)}
+.sg:nth-child(3) b:hover{background:var(--sky)}
+.sg:nth-child(4) b:hover{background:var(--lilac)}
+.sg:nth-child(5) b:hover{background:#e0a400}
+.a-pk circle.b{fill:var(--sky)}
+.a-pk circle.c{fill:var(--butter);stroke:none}
+.tiles .tile:nth-child(1):hover{box-shadow:0 30px 50px -30px rgba(90,169,240,.7)}
+.tiles .tile:nth-child(1) .mono,.tiles .tile:nth-child(1) i{color:#2f7fcf}
+.tiles .tile:nth-child(3) .mono,.tiles .tile:nth-child(3) i{color:#7a59dd}
+.tiles .tile:nth-child(4) .mono,.tiles .tile:nth-child(4) i{color:#d9573a}
+.lang i::after{background:linear-gradient(90deg,var(--rose),var(--peach),var(--butter))}
+.progress{background:linear-gradient(90deg,var(--rose),var(--peach),var(--butter))}
+
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important}
   .hero{height:auto}.hero-pin{position:relative;height:auto;min-height:100svh}
@@ -602,7 +666,7 @@ section{position:relative}
           <a class="btn ghost magnetic" href="#contact" data-cursor="привет">Написать мне</a>
         </div>
       </div>
-      <div class="touch-tag" id="touchTag">потрогай сердце ↝</div>
+      <div class="touch-tag" id="touchTag"><span class="tt-desk">потрогай сердце ↝</span><span class="tt-touch">нажми на сердце ♡</span></div>
       <div class="hero-moon" id="heroMoon" aria-hidden="true"><svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.6 8.6 0 1 0 11.1 11.1z"/></svg><span class="mono">Айым = «моя луна»</span></div>
       <div class="morph-cap" id="morphCap">это я. давай знакомиться ↓</div>
       <div class="hero-foot">
@@ -628,7 +692,7 @@ section{position:relative}
       </div>
       <div class="be-grid">
         <figure class="arch" id="arch" data-reveal>
-          <figcaption class="mono">QADAM Hub · как устроен бэкенд <span>наведи на узел</span></figcaption>
+          <figcaption class="mono">QADAM Hub · как устроен бэкенд <span class="tt-desk">наведи на узел</span><span class="tt-touch">нажми на узел</span></figcaption>
           <svg viewBox="0 0 560 380" role="img" aria-labelledby="archT archD">
             <title id="archT">Архитектура бэкенда QADAM Hub</title>
             <desc id="archD">Веб-клиент на React обращается к API на Node.js, который работает на сервере Oracle Cloud ARM64. API хранит данные в Supabase и PostgreSQL, ищет возможности через Tavily и структурирует их моделью NVIDIA Nemotron.</desc>
@@ -828,6 +892,9 @@ const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const fine = matchMedia("(pointer: fine)").matches;
 const hasGsap = typeof window.gsap !== "undefined" && typeof window.ScrollTrigger !== "undefined";
 if (hasGsap) gsap.registerPlugin(ScrollTrigger);
+// touch phones get a calm version: no particle bursts, no tap sparks, no pinned hero, no skewing text
+const lite = !fine || innerWidth < 760;
+if (hasGsap) ScrollTrigger.config({ignoreMobileResize:true});
 
 /* ---------------- data (from the original site) ---------------- */
 const GH = "https://github.com/Aiymkoos/";
@@ -1007,7 +1074,7 @@ if (fine && !reduce){
 
 /* click sparks */
 document.addEventListener("click", e => {
-  if (reduce) return;
+  if (reduce || lite) return;
   for (let i=0;i<7;i++){
     const s = document.createElement("span"); s.className = "spark"; s.textContent = ["☾","♡","✦"][i%3];
     s.style.left = e.clientX+"px"; s.style.top = e.clientY+"px"; document.body.appendChild(s);
@@ -1019,15 +1086,15 @@ document.addEventListener("click", e => {
 /* ---------------- HEART: particle heart → name ---------------- */
 const canvas = $("#bloom"), ctx = canvas.getContext("2d");
 const hero = $(".hero"), heroInner = $("#heroInner"), touchTag = $("#touchTag"), morphCap = $("#morphCap");
-const N = innerWidth < 760 ? 1300 : 2600;
-const COLORS = ["#ee6fa6","#c93d7d","#f29bbf","#fbd0e1","#a98bf5","#ff9ec8"];
+const N = innerWidth < 760 ? 900 : 2600;
+const COLORS = ["#ee6fa6","#c93d7d","#ff8a65","#ffc94d","#5aa9f0","#9a7bef"];
 let W=0,H=0,DPR=1, textPts=[], morph=0, bloomKick=0, pointer={x:-999,y:-999,active:false}, running=true;
 // kinds: 0 = heart shell (crisp outline), 1 = heart volume, 2 = orbit ring of sparks around it
 const HEART_COLORS = ["#e0619a","#e9729f","#f29bbf","#d94f8c","#f07aaa"];
 const P = Array.from({length:N}, (_,i) => {
   const roll = Math.random(), kind = roll < .55 ? 0 : roll < .86 ? 1 : 2;
   const s = kind === 0 ? .93 + Math.random()*.07 : kind === 1 ? Math.sqrt(Math.random())*.92 : 1.22 + Math.random()*.22;
-  const c = kind === 2 ? (Math.random() < .7 ? "#c93d7d" : "#a98bf5") : kind === 1 && s < .5 ? "#c8457f" : HEART_COLORS[(Math.random()*HEART_COLORS.length)|0];
+  const c = kind === 2 ? ["#ff8a65","#ffc94d","#5aa9f0","#9a7bef","#c93d7d"][(Math.random()*5)|0] : kind === 1 && s < .5 ? "#c8457f" : HEART_COLORS[(Math.random()*HEART_COLORS.length)|0];
   return { th: Math.random()*Math.PI*2, s, kind, zr: Math.random()*2-1,
     ph: Math.random()*Math.PI*2, x: Math.random()*innerWidth, y: Math.random()*innerHeight, vx:0, vy:0,
     c, r: kind === 2 ? .6+Math.random()*1.4 : .8+Math.random()*1.8, ti:i };
@@ -1060,7 +1127,7 @@ function resize(){
 function shapePos(p, t, out){
   const mobile = W < 760;
   const R = Math.min(W,H) * (mobile ? .3 : .3) * (1 + beat(t) + bloomKick*.22);
-  const ccx = mobile ? W*.5 : W*.72, ccy = mobile ? H*.8 : H*.5;
+  const ccx = mobile ? W*.5 : W*.72, ccy = mobile ? H - Math.min(W,H)*.42 : H*.5;
   let x,y,z;
   if (p.kind === 2){
     // tilted orbit ring of sparks drifting around the heart
@@ -1094,7 +1161,7 @@ function frame(now){
   ctx.clearRect(0,0,W,H);
   // soft glow
   const mobile = W < 760;
-  const gx = mobile ? W*.5 : W*(.72 - .22*morph), gy = mobile ? H*(.8 - .33*morph) : H*.5;
+  const gx = mobile ? W*.5 : W*(.72 - .22*morph), gy = mobile ? H - Math.min(W,H)*.42 : H*.5;
   const g = ctx.createRadialGradient(gx,gy,0,gx,gy,Math.min(W,H)*.55);
   g.addColorStop(0,"rgba(248,207,224,.55)"); g.addColorStop(1,"rgba(248,207,224,0)");
   ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
@@ -1122,15 +1189,15 @@ function burst(x,y,power=26){
   bloomKick = 1;
   P.forEach(p => { const dx=p.x-x, dy=p.y-y, l=Math.hypot(dx,dy)||1; const f = power*Math.max(0,1-l/420); p.vx += dx/l*f + (Math.random()-.5)*4; p.vy += dy/l*f + (Math.random()-.5)*4; });
 }
-canvas.addEventListener("pointermove", e => { const r = canvas.getBoundingClientRect(); pointer.x = e.clientX-r.left; pointer.y = e.clientY-r.top; pointer.active = true; touchTag.style.opacity = 0; });
+canvas.addEventListener("pointermove", e => { if (e.pointerType !== "mouse") return; const r = canvas.getBoundingClientRect(); pointer.x = e.clientX-r.left; pointer.y = e.clientY-r.top; pointer.active = true; touchTag.style.opacity = 0; });
 canvas.addEventListener("pointerleave", () => { pointer.active = false; pointer.x = pointer.y = -999; });
-canvas.addEventListener("pointerdown", e => { const r = canvas.getBoundingClientRect(); burst(e.clientX-r.left, e.clientY-r.top); });
-heroInner.addEventListener("pointermove", e => { const r = canvas.getBoundingClientRect(); pointer.x = e.clientX-r.left; pointer.y = e.clientY-r.top; pointer.active = true; });
+canvas.addEventListener("pointerdown", e => { if (e.pointerType !== "mouse"){ bloomKick = 1; return; } const r = canvas.getBoundingClientRect(); burst(e.clientX-r.left, e.clientY-r.top); });
+heroInner.addEventListener("pointermove", e => { if (e.pointerType !== "mouse") return; const r = canvas.getBoundingClientRect(); pointer.x = e.clientX-r.left; pointer.y = e.clientY-r.top; pointer.active = true; });
 new IntersectionObserver(es => { const v = es[0].isIntersecting; if (v && !running){ running = true; if(!reduce) requestAnimationFrame(frame); } running = v; }).observe(hero);
-let rT; addEventListener("resize", () => { clearTimeout(rT); rT = setTimeout(resize, 150); });
+let rT, lastW = innerWidth; addEventListener("resize", () => { if (lite && innerWidth === lastW) return; lastW = innerWidth; clearTimeout(rT); rT = setTimeout(resize, 150); });
 resize();
 (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(() => { sampleText(); });
-P.forEach(p => { shapePos(p, 0, tmp); p.x = W/2 + (Math.random()-.5)*W*1.4; p.y = H/2 + (Math.random()-.5)*H*1.4; });
+P.forEach(p => { shapePos(p, 0, tmp); if (lite){ p.x = tmp.x; p.y = tmp.y; } else { p.x = W/2 + (Math.random()-.5)*W*1.4; p.y = H/2 + (Math.random()-.5)*H*1.4; } });
 if (reduce){ P.forEach(p=>{ shapePos(p,0,tmp); p.x=tmp.x; p.y=tmp.y; }); frame(0); } else requestAnimationFrame(frame);
 
 /* rotating word */
@@ -1149,9 +1216,8 @@ function onScroll(){
   const ph = document.getElementById("phShadow"); if (ph) ph.setAttribute("cx", String(12 + (sh > 0 ? scrollY/sh : 0) * 19));
   // hero morph
   const hr = hero.getBoundingClientRect(); const span = hero.offsetHeight - innerHeight;
-  morph = reduce ? 0 : Math.min(1, Math.max(0, -hr.top / (span*.75)));
-  heroInner.style.opacity = String(1 - Math.min(1, morph*1.8));
-  heroInner.style.transform = `translateY(${-morph*80}px)`;
+  morph = (reduce || lite) ? 0 : Math.min(1, Math.max(0, -hr.top / (span*.75)));
+  if (!lite){ heroInner.style.opacity = String(1 - Math.min(1, morph*1.8)); heroInner.style.transform = `translateY(${-morph*80}px)`; }
   morphCap.style.opacity = String(Math.max(0, (morph - .7)/.3));
   if (morph > .02) touchTag.style.opacity = 0;
   // active nav
@@ -1170,7 +1236,7 @@ function intro(){
     .from(".hero-sub, .hero-cta > *", {y:30, opacity:0, duration:1, stagger:.08}, "<.25")
     .from(".nav-pill", {y:-40, opacity:0, duration:1, stagger:.1}, "<")
     .from(".touch-tag", {scale:0, rotate:-30, duration:1, ease:"back.out(2)"}, "<.3");
-  burst(W*(W<760?.5:.72), H*(W<760?.8:.5), 40);
+  if (!lite) burst(W*.72, H*.5, 40); else bloomKick = 1;
 }
 function finishLoader(){ loader.classList.add("out"); setTimeout(() => loader.remove(), 1000); intro(); }
 if (reduce){ loader.remove(); intro(); }
@@ -1212,12 +1278,12 @@ if (hasGsap && !reduce){
   let vel = 0;
   ScrollTrigger.create({onUpdate: s => { vel = s.getVelocity(); }});
   gsap.ticker.add(() => {
-    const boost = 1 + Math.min(8, Math.abs(vel)/300); vel *= .92;
+    const boost = lite ? 1 : 1 + Math.min(8, Math.abs(vel)/300); vel *= .92; if (lite) vel = 0;
     mqState.forEach(m => { const half = m.t.scrollWidth/2; m.x += m.dir * 1.1 * boost; if (m.x < -half) m.x += half; if (m.x > 0) m.x -= half; m.t.style.transform = `translateX(${m.x}px) skewX(${Math.max(-12,Math.min(12,-vel/120))*m.dir}deg)`; });
   });
 
   // reveals
-  $$("[data-reveal]").forEach(el => gsap.from(el, {y:70, opacity:0, duration:1.2, ease:"expo.out", scrollTrigger:{trigger:el, start:"top 88%"}}));
+  $$("[data-reveal]").forEach(el => gsap.from(el, {y: lite ? 18 : 70, opacity:0, duration: lite ? .7 : 1.2, ease:"expo.out", scrollTrigger:{trigger:el, start:"top 92%"}}));
   $$(".sec-title").forEach(el => gsap.from(el, {yPercent:40, opacity:0, duration:1.2, ease:"expo.out", scrollTrigger:{trigger:el, start:"top 88%"}}));
 
   // horizontal project reel (desktop)
